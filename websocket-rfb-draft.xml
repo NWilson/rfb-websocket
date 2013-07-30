@@ -279,15 +279,14 @@
       in the sub-sections below and remove this note.</t>
 
       <section title="Registration of the RFB WebSocket Subprotocol">
-        <t>This specifications described a WebSocket subprotocol registered in
+        <t>This specification describes a WebSocket subprotocol registered in
         the WebSocket Subprotocol Name Registry defined in <xref
-        target="RFC6455"/> section 11.5.</t>
+        target="RFC6455"/>, section 11.5.</t>
 
         <t><list style="hanging">
             <t hangText="Subprotocol Identifier:">"rfb"</t>
 
-            <t hangText="Subprotocol Common Name:">Remote Framebuffer Protocol
-            (RFB)</t>
+            <t hangText="Subprotocol Common Name:">RFB</t>
 
             <t hangText="Subprotocol Definition:">RFC??? (this document)</t>
           </list></t>
@@ -350,7 +349,7 @@
       </section>
 
       <section title="Creating a Safe JavaScript Environment">
-        <t>It is expected that RFB WebSocket clients are likely to be
+        <t>Many of the RFB clients using WebSockets are likely to be
         implemented in JavaScript and executed by web-browsers. In this case,
         implementors must be aware of the difficulties of executing JavaScript
         in a safe context. Banners and other resources loaded alongside the

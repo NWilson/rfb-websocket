@@ -514,14 +514,14 @@
 <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#IANA" id="IANA">IANA Considerations</a></h1>
 <p id="rfc.section.5.p.1">RFC Editor Note: Please set the RFC number assigned for this document in the sub-sections below and remove this note.</p>
 <h1 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1.</a> Registration of the RFB WebSocket Subprotocol</h1>
-<p id="rfc.section.5.1.p.1">This specifications described a WebSocket subprotocol registered in the WebSocket Subprotocol Name Registry defined in <a href="#RFC6455">[RFC6455]</a> section 11.5.</p>
+<p id="rfc.section.5.1.p.1">This specification describes a WebSocket subprotocol registered in the WebSocket Subprotocol Name Registry defined in <a href="#RFC6455">[RFC6455]</a>, section 11.5.</p>
 <p/>
 
 <dl>
   <dt>Subprotocol Identifier:</dt>
   <dd style="margin-left: 8">"rfb"</dd>
   <dt>Subprotocol Common Name:</dt>
-  <dd style="margin-left: 8">Remote Framebuffer Protocol (RFB)</dd>
+  <dd style="margin-left: 8">RFB</dd>
   <dt>Subprotocol Definition:</dt>
   <dd style="margin-left: 8">RFC??? (this document)</dd>
 </dl>
@@ -534,7 +534,7 @@
 <h1 id="rfc.section.6.2"><a href="#rfc.section.6.2">6.2.</a> Encryption</h1>
 <p id="rfc.section.6.2.p.1">Where applicable, the Secure WebSocket Protocol (using the WebSocket Protocol over <a href="#RFC5246">TLS</a> <cite title="NONE">[RFC5246]</cite>) may be used. However, it is not practicable in all circumstances to provision many dynamic RFB servers on a LAN with a certificate which browsers can verify, so implementors may choose to perform encryption at the application level using an encrypting RFB Security Type, and verify the peer using identities which can be verified by the RFB implementation rather than the browser.</p>
 <h1 id="rfc.section.6.3"><a href="#rfc.section.6.3">6.3.</a> Creating a Safe JavaScript Environment</h1>
-<p id="rfc.section.6.3.p.1">It is expected that RFB WebSocket clients are likely to be implemented in JavaScript and executed by web-browsers. In this case, implementors must be aware of the difficulties of executing JavaScript in a safe context. Banners and other resources loaded alongside the page may substitute functions into top-level objects and subvert the security of the connection or skim passwords. When implementing any application which prompts for a user's password or sends and receives data which may be sensitive, the application must be loaded from a safe context, such as a web page served over HTTPS, and which loads no untrusted external resources. Certain operations required for encryption, such as secure random number generation, may require browser support such as the <a href="#WCAPI">Web Cryptography API</a> <cite title="NONE">[WCAPI]</cite>.</p>
+<p id="rfc.section.6.3.p.1">Many of the RFB clients using WebSockets are likely to be implemented in JavaScript and executed by web-browsers. In this case, implementors must be aware of the difficulties of executing JavaScript in a safe context. Banners and other resources loaded alongside the page may substitute functions into top-level objects and subvert the security of the connection or skim passwords. When implementing any application which prompts for a user's password or sends and receives data which may be sensitive, the application must be loaded from a safe context, such as a web page served over HTTPS, and which loads no untrusted external resources. Certain operations required for encryption, such as secure random number generation, may require browser support such as the <a href="#WCAPI">Web Cryptography API</a> <cite title="NONE">[WCAPI]</cite>.</p>
 <h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> <a href="#Acknowledgements" id="Acknowledgements">Acknowledgements</a></h1>
 <p id="rfc.section.7.p.1">Mention noVNC/libvncserver for providing an early implementation?</p>
 <p id="rfc.section.7.p.2">Thank Pierre Garnero?</p>

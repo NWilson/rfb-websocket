@@ -338,13 +338,13 @@ Nicholas                Expires February 02, 2004               [Page 6]
 Internet-Draft        The RFB WebSocket Subprotocol          August 2003
 
 
-   This specifications described a WebSocket subprotocol registered in
-   the WebSocket Subprotocol Name Registry defined in [RFC6455] section
+   This specification describes a WebSocket subprotocol registered in
+   the WebSocket Subprotocol Name Registry defined in [RFC6455], section
    11.5.
 
    Subprotocol Identifier:  "rfb"
 
-   Subprotocol Common Name:  Remote Framebuffer Protocol (RFB)
+   Subprotocol Common Name:  RFB
 
    Subprotocol Definition:  RFC??? (this document)
 
@@ -423,9 +423,9 @@ Internet-Draft        The RFB WebSocket Subprotocol          August 2003
 
 6.3.  Creating a Safe JavaScript Environment
 
-   It is expected that RFB WebSocket clients are likely to be
-   implemented in JavaScript and executed by web-browsers.  In this
-   case, implementors must be aware of the difficulties of executing
+   Many of the RFB clients using WebSockets are likely to be implemented
+   in JavaScript and executed by web-browsers.  In this case,
+   implementors must be aware of the difficulties of executing
    JavaScript in a safe context.  Banners and other resources loaded
    alongside the page may substitute functions into top-level objects
    and subvert the security of the connection or skim passwords.  When
