@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="info" docName="draft-realvnc-websocket-00" ipr="trust200902">
+<rfc category="info" docName="draft-realvnc-websocket-01-github" ipr="trust200902">
   <front>
     <title abbrev="The RFB WebSocket Subprotocol">Use of the WebSocket
     Protocol as a Transport for the Remote Framebuffer Protocol</title>

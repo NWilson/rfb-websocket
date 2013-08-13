@@ -10,7 +10,7 @@ Expires: February 14, 2014
 
 Use of the WebSocket Protocol as a Transport for the Remote Framebuffer
                                 Protocol
-                       draft-realvnc-websocket-00
+                   draft-realvnc-websocket-01-github
 
 Abstract
 
