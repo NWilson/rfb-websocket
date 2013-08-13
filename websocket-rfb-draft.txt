@@ -2,10 +2,10 @@
 
 
 
-Internet Engineering Taskforce                               N. Nicholas
+Internet Engineering Taskforce                                 N. Wilson
 Internet-Draft                                              RealVNC Ltd.
-Intended status: Informational                               August 2003
-Expires: February 02, 2004
+Intended status: Informational                           August 13, 2013
+Expires: February 14, 2014
 
 
 Use of the WebSocket Protocol as a Transport for the Remote Framebuffer
@@ -42,20 +42,20 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 02, 2004.
+   This Internet-Draft will expire on February 14, 2014.
 
 Copyright Notice
 
-   Copyright (c) 2003 IETF Trust and the persons identified as the
+   Copyright (c) 2013 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
 
 
 
 
-Nicholas                Expires February 02, 2004               [Page 1]
+Wilson                  Expires February 14, 2014               [Page 1]
 
-Internet-Draft        The RFB WebSocket Subprotocol          August 2003
+Internet-Draft        The RFB WebSocket Subprotocol          August 2013
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -86,7 +86,7 @@ Table of Contents
      6.2.  Encryption  . . . . . . . . . . . . . . . . . . . . . . .   8
      6.3.  Creating a Safe JavaScript Environment  . . . . . . . . .   8
    7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   8
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
      8.2.  Informative References  . . . . . . . . . . . . . . . . .   9
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   9
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Nicholas                Expires February 02, 2004               [Page 2]
+Wilson                  Expires February 14, 2014               [Page 2]
 
-Internet-Draft        The RFB WebSocket Subprotocol          August 2003
+Internet-Draft        The RFB WebSocket Subprotocol          August 2013
 
 
    resources such as JavaScript scripts the ability to make arbitrary
@@ -165,9 +165,9 @@ Internet-Draft        The RFB WebSocket Subprotocol          August 2003
 
 
 
-Nicholas                Expires February 02, 2004               [Page 3]
+Wilson                  Expires February 14, 2014               [Page 3]
 
-Internet-Draft        The RFB WebSocket Subprotocol          August 2003
+Internet-Draft        The RFB WebSocket Subprotocol          August 2013
 
 
    Secondly, it is advantageous to RFB servers to be able to wrap the
@@ -221,9 +221,9 @@ Internet-Draft        The RFB WebSocket Subprotocol          August 2003
 
 
 
-Nicholas                Expires February 02, 2004               [Page 4]
+Wilson                  Expires February 14, 2014               [Page 4]
 
-Internet-Draft        The RFB WebSocket Subprotocol          August 2003
+Internet-Draft        The RFB WebSocket Subprotocol          August 2013
 
 
    WebSocket subprotocol was not requested by the client or was not
@@ -277,9 +277,9 @@ Internet-Draft        The RFB WebSocket Subprotocol          August 2003
 
 
 
-Nicholas                Expires February 02, 2004               [Page 5]
+Wilson                  Expires February 14, 2014               [Page 5]
 
-Internet-Draft        The RFB WebSocket Subprotocol          August 2003
+Internet-Draft        The RFB WebSocket Subprotocol          August 2013
 
 
    The RFB octet-stream is transported using Data frames with opcode 0x2
@@ -333,9 +333,9 @@ Internet-Draft        The RFB WebSocket Subprotocol          August 2003
 
 
 
-Nicholas                Expires February 02, 2004               [Page 6]
+Wilson                  Expires February 14, 2014               [Page 6]
 
-Internet-Draft        The RFB WebSocket Subprotocol          August 2003
+Internet-Draft        The RFB WebSocket Subprotocol          August 2013
 
 
    This specification describes a WebSocket subprotocol registered in
@@ -389,9 +389,9 @@ Internet-Draft        The RFB WebSocket Subprotocol          August 2003
 
 
 
-Nicholas                Expires February 02, 2004               [Page 7]
+Wilson                  Expires February 14, 2014               [Page 7]
 
-Internet-Draft        The RFB WebSocket Subprotocol          August 2003
+Internet-Draft        The RFB WebSocket Subprotocol          August 2013
 
 
    Therefore, any WebSocket server implementers must carefully consider
@@ -438,19 +438,17 @@ Internet-Draft        The RFB WebSocket Subprotocol          August 2003
 
 7.  Acknowledgements
 
-   Mention noVNC/libvncserver for providing an early implementation?
-
-   Thank Pierre Garnero?
-
-
-
-
-Nicholas                Expires February 02, 2004               [Page 8]
-
-Internet-Draft        The RFB WebSocket Subprotocol          August 2003
-
+   Thanks to Pierre Garnero of Visteon for feedback during drafting.
 
 8.  References
+
+
+
+
+Wilson                  Expires February 14, 2014               [Page 8]
+
+Internet-Draft        The RFB WebSocket Subprotocol          August 2013
+
 
 8.1.  Normative References
 
@@ -501,4 +499,6 @@ Author's Address
 
 
 
-Nicholas                Expires February 02, 2004               [Page 9]
+
+
+Wilson                  Expires February 14, 2014               [Page 9]

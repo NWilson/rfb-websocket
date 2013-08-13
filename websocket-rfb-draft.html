@@ -377,9 +377,9 @@
   <meta name="generator" content="xml2rfc version 2.4.2 - http://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
-  <meta name="dct.creator" content="Nicholas, N." />
+  <meta name="dct.creator" content="Wilson, N." />
   <meta name="dct.identifier" content="urn:ietf:id:draft-realvnc-websocket-00" />
-  <meta name="dct.issued" scheme="ISO8601" content="2003-8" />
+  <meta name="dct.issued" scheme="ISO8601" content="2013-8-13" />
   <meta name="dct.abstract" content="The Remote Framebuffer protocol (RFB) enables clients to connect to and control remote graphical resources. This document describes a transport for RFB using the WebSocket protocol, and defines a corresponding WebSocket subprotocol, enabling an RFB server to offer resources to clients with WebSocket connectivity, such as web-browsers." />
   <meta name="description" content="The Remote Framebuffer protocol (RFB) enables clients to connect to and control remote graphical resources. This document describes a transport for RFB using the WebSocket protocol, and defines a corresponding WebSocket subprotocol, enabling an RFB server to offer resources to clients with WebSocket connectivity, such as web-browsers." />
 
@@ -392,7 +392,7 @@
     
     	<tr>
   <td class="left">Internet Engineering Taskforce</td>
-  <td class="right">N. Nicholas</td>
+  <td class="right">N. Wilson</td>
 </tr>
 <tr>
   <td class="left">Internet-Draft</td>
@@ -400,10 +400,10 @@
 </tr>
 <tr>
   <td class="left">Intended status: Informational</td>
-  <td class="right">August 2003</td>
+  <td class="right">August 13, 2013</td>
 </tr>
 <tr>
-  <td class="left">Expires: February 02, 2004</td>
+  <td class="left">Expires: February 14, 2014</td>
   <td class="right"></td>
 </tr>
 
@@ -428,11 +428,11 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on February 02, 2004.</p>
+<p>This Internet-Draft will expire on February 14, 2014.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
-<p>Copyright (c) 2003 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
+<p>Copyright (c) 2013 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
 
   
@@ -536,8 +536,7 @@
 <h1 id="rfc.section.6.3"><a href="#rfc.section.6.3">6.3.</a> Creating a Safe JavaScript Environment</h1>
 <p id="rfc.section.6.3.p.1">Many of the RFB clients using WebSockets are likely to be implemented in JavaScript and executed by web-browsers. In this case, implementors must be aware of the difficulties of executing JavaScript in a safe context. Banners and other resources loaded alongside the page may substitute functions into top-level objects and subvert the security of the connection or skim passwords. When implementing any application which prompts for a user's password or sends and receives data which may be sensitive, the application must be loaded from a safe context, such as a web page served over HTTPS, and which loads no untrusted external resources. Certain operations required for encryption, such as secure random number generation, may require browser support such as the <a href="#WCAPI">Web Cryptography API</a> <cite title="NONE">[WCAPI]</cite>.</p>
 <h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> <a href="#Acknowledgements" id="Acknowledgements">Acknowledgements</a></h1>
-<p id="rfc.section.7.p.1">Mention noVNC/libvncserver for providing an early implementation?</p>
-<p id="rfc.section.7.p.2">Thank Pierre Garnero?</p>
+<p id="rfc.section.7.p.1">Thanks to Pierre Garnero of Visteon for feedback during drafting.</p>
 <h1 id="rfc.references"><a href="#rfc.references">8.</a> References</h1>
 <h1 id="rfc.references.1"><a href="#rfc.references.1">8.1.</a> Normative References</h1>
 <table>
@@ -593,7 +592,7 @@
 	<span class="vcardline">
 	  <span class="fn">Nicholas Wilson</span> 
 	  <span class="n hidden">
-		<span class="family-name">Nicholas</span>
+		<span class="family-name">Wilson</span>
 	  </span>
 	</span>
 	<span class="org vcardline">RealVNC Ltd.</span>
