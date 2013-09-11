@@ -99,7 +99,7 @@
         it likely that WebSocket servers will commonly be run only on ports 80
         and 443. The WebSocket subprotocol mechanism is analogous to the port
         number system of IP addressing, but a short string naturally
-        associated with the service is to identify it, rather than a
+        associated with the service is used to identify it, rather than a
         number.</t>
       </section>
 
@@ -108,7 +108,7 @@
 
         <t>The <xref target="RFC6143">RFB Protocol</xref>, section 7 explains
         that the protocol may operate over any reliable stream- or
-        message-oriented transport, but only describes the RFB as a stream of
+        message-oriented transport, but only describes the RFB protocol as a stream of
         octets. This gives a clear mapping for the TCP/IP transport, but for
         message-oriented transport layers, the encapsulation of the RFB
         octet-stream must be specified.</t>
@@ -120,20 +120,20 @@
 
         <t>This is firstly because some RFB messages may be large, such as
         those containing pixel data, and requiring these to be processed as a
-        single message may be large burden for some clients. The <xref
+        single message may be a significant burden for some clients. The <xref
         target="WSAPI">WebSocket API</xref> requires an implementation of the
         API to buffer the fragments of the WebSocket message until the entire
         message has been received. Although the RFB server and any
         WebSocket-aware proxy can fragment the message as it chooses, a client
-        application such as a mobile web-browser may have to consume several
+        application such as a mobile web-browser would have to consume several
         megabytes of memory to satisfy the requirements of the WebSocket
-        API.</t>
+        API, if RFB messages could not be split across multiple WebSocket messages.</t>
 
         <t>Secondly, it is advantageous to RFB servers to be able to wrap the
         RFB stream in WebSocket messages flexibly. As well as being a
         convenience to implementors of RFB servers, it also enables WebSocket
         connectivity to be added to legacy software using a proxy. Without
-        requiring knowledge the protocol, and generic proxy may be used which
+        requiring knowledge the protocol, a generic proxy may be used which
         concatenates WebSocket messages received from the WebSocket client to
         send over TCP to the RFB server, and reads bytes from the RFB server
         and sends them to the client via WebSocket messages.</t>
