@@ -10,7 +10,8 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="info" docName="draft-realvnc-websocket-01-github" ipr="trust200902">
+<rfc category="info" docName="draft-realvnc-websocket-01-github"
+     ipr="trust200902">
   <front>
     <title abbrev="The RFB WebSocket Subprotocol">Use of the WebSocket
     Protocol as a Transport for the Remote Framebuffer Protocol</title>
@@ -79,15 +80,18 @@
         <t>In addition, although untrusted websites cannot be given a
         mechanism to make arbitrary TCP connections, web-browsers are able to
         offer web resources such as JavaScript scripts the ability to make
-        arbitrary connections using the WebSocket protocol. This is because
-        the initial HTTP handshake, performed by the user agent rather than
-        the untrusted web resource, conveys origin context, preventing a
-        remote webpage from accessing servers on the local network unless the
-        server is configured to allow such access.</t>
+        arbitrary connections using the WebSocket protocol. The initial
+        HTTP-formatted handshake is performed by the user agent rather than
+        the untrusted web resource, and it conveys origin context, unlike a
+        TCP handshake. The web-browser is therefore able to allow pages to
+        open WebSocket connections, without opening up remote access to
+        servers on the local network, because WebSocket servers are able to
+        check the origin passed by the browser.</t>
 
         <t>Therefore, offering RFB resources over a WebSocket-based transport
-        opens access to a variety of devices unable to use the TCP transport
-        described in <xref target="RFC6143">The RFB Protocol</xref>.</t>
+        opens access to a variety of applications such as web pages, which are
+        unable to use the TCP transport described in <xref
+        target="RFC6143">The RFB Protocol</xref>.</t>
 
         <t>The purpose of defining a WebSocket subprotocol is firstly to give
         endpoints a clear way to indicate how the RFB stream is mapped to
@@ -95,12 +99,12 @@
         an agreed mapping. Secondly, using a WebSocket subprotocol enables
         multiple services to run at once on a single server. Services which
         run over TCP/IP commonly use a port number allocated for each service
-        to enable multiple services, but the behaviour of HTTP proxies makes
-        it likely that WebSocket servers will commonly be run only on ports 80
-        and 443. The WebSocket subprotocol mechanism is analogous to the port
-        number system of IP addressing, but a short string naturally
-        associated with the service is used to identify it, rather than a
-        number.</t>
+        to enable multiple listening services on one machine, but the
+        behaviour of HTTP proxies makes it likely that WebSocket servers will
+        commonly be run only on ports 80 and 443. The WebSocket subprotocol
+        mechanism is analogous to the port number system of IP addressing, but
+        uses a short string naturally associated with the service for
+        identification, rather than an allocated number.</t>
       </section>
 
       <section title="Overview of the WebSocket Protocol as a stream transport">
@@ -108,26 +112,27 @@
 
         <t>The <xref target="RFC6143">RFB Protocol</xref>, section 7 explains
         that the protocol may operate over any reliable stream- or
-        message-oriented transport, but only describes the RFB protocol as a stream of
-        octets. This gives a clear mapping for the TCP/IP transport, but for
-        message-oriented transport layers, the encapsulation of the RFB
-        octet-stream must be specified.</t>
+        message-oriented transport, but only describes the RFB protocol as a
+        stream of octets. This gives a clear mapping for the TCP/IP transport,
+        but for message-oriented transport layers, the encapsulation of the
+        RFB octet-stream must be specified.</t>
 
         <t>In this document, the WebSocket subprotocol for RFB is defined to
         place no importance on the message boundaries of the WebSocket layer.
-        Instead, WebSocket messages are concatenated to form in each direction
-        an octet-stream.</t>
+        Instead, WebSocket messages are concatenated to form an octet stream
+        in each direction.</t>
 
         <t>This is firstly because some RFB messages may be large, such as
-        those containing pixel data, and requiring these to be processed as a
-        single message may be a significant burden for some clients. The <xref
-        target="WSAPI">WebSocket API</xref> requires an implementation of the
-        API to buffer the fragments of the WebSocket message until the entire
-        message has been received. Although the RFB server and any
-        WebSocket-aware proxy can fragment the message as it chooses, a client
-        application such as a mobile web-browser would have to consume several
-        megabytes of memory to satisfy the requirements of the WebSocket
-        API, if RFB messages could not be split across multiple WebSocket messages.</t>
+        those containing pixel data, and it may be a significant burden to
+        some client to require these to be processed as a single message. The
+        <xref target="WSAPI">WebSocket API</xref> requires clients to buffer
+        the fragments of the WebSocket message until the entire message has
+        been received. Although the RFB server and any WebSocket-aware proxy
+        can fragment the message as it chooses, a client application such as a
+        mobile web-browser would have to consume several megabytes of memory
+        to satisfy the requirements of the WebSocket API, if an RFB
+        FramebufferUpdate message could not be split across multiple WebSocket
+        messages.</t>
 
         <t>Secondly, it is advantageous to RFB servers to be able to wrap the
         RFB stream in WebSocket messages flexibly. As well as being a
@@ -180,21 +185,20 @@
         containing the token "rfb".</t>
 
         <t>The interpretation of any data following the opening WebSocket
-        handshake is determined by any subprotocols in effect. If the RFB
-        WebSocket subprotocol was not requested by the client or was not
+        handshake is determined by the subprotocol in effect, if any. If the
+        RFB WebSocket subprotocol was not requested by the client or was not
         selected by the server, then this document does not place any
         interpretation on the subsequent data. In particular, if a client
         requests any subprotocol but the server not include it in its
-        response, the client need not assume any particular meaning for the
-        data that follows. This is because WebSocket servers are likely to
-        ignore requsts for any unknown subprotocols and proceed. If the
-        WebSocket client requires use of a particular subprotocol, it is its
-        responsibility to close the connection if use of the subprotocol was
-        not successfully negotiated.</t>
+        response, the client cannot assume any particular meaning for the data
+        that follows. This is because WebSocket servers may ignore requests
+        for any unknown subprotocols and proceed, and in practice are expected
+        to do so. If the WebSocket client requires use of a particular
+        subprotocol, it is its responsibility to close the connection if use
+        of the subprotocol was not successfully negotiated.</t>
 
         <t>The RFB WebSocket subprotocol does not place any restrictions on
-        use of the subprotocol alongside WebSocket extensions. (Note that only
-        one subprotocol may be used by a WebSocket connection.) The effect of
+        use of the subprotocol alongside WebSocket extensions. The effect of
         any such extensions is outside the scope of this document.</t>
       </section>
 
@@ -207,7 +211,8 @@
         the WebSocket client or server SHOULD NOT convey RFB-specific
         information. No status codes in the private use range 4000-4999 are
         defined by this subprotocol. No mapping is provided between WebSocket
-        Close frame status codes and strings using RFB messages.</t>
+        Close frame status codes and the strings used in RFB Close
+        messages.</t>
 
         <t>Any RFB-specific close data MAY be conveyed using an appropriate
         RFB message. For example, in the case of an RFB authentication
@@ -222,7 +227,7 @@
 
         <t>The meaning of any status codes used in Close frames MUST refer to
         the state of the WebSocket protocol, for status codes defined in the
-        WebSocket Protocol and any subsequent versions or other specifications
+        WebSocket Protocol and any subsequent versions, or other status codes
         registered by the IANA in the Close Code Number Registry. For example,
         the status code 1002 ("Protocol Error") describes errors in the
         WebSocket protocol and not an error in the RFB stream carried by the
@@ -251,18 +256,13 @@
         the size of the messages they send to avoid placing unnecessary load
         on clients.</t>
 
-        <t>The interpration of Text messages (with opcode 0x1) is unspecified.
-        RFB WebSocket endpoints SHOULD NOT send Text messages, but if a
-        WebSocket extension is in use which uses these messages they may be
-        sent. An RFB WebSocket client receiving such a message SHOULD fail the
-        WebSocket connection (as defined in section 7.1.7 of <xref
-        target="RFC6455"/>) except where any mechanism has been used to
-        negotiate a meaning for these messages. In general, WebSocket
-        extensions may modify the interpretation of data, and as appropriate
-        each the definition of each extension must specify how it interacts
-        with application data using Binary messages in order to be compatible
-        with the RFB WebSocket subprotocol, which is beyond the scope of this
-        document.</t>
+        <t>The interpretation of Text messages (with opcode 0x1) is
+        unspecified. RFB WebSocket endpoints SHOULD NOT send Text messages,
+        but if a WebSocket extension is in use which uses these messages they
+        may be sent. An RFB WebSocket client receiving such a message SHOULD
+        fail the WebSocket connection (as defined in section 7.1.7 of <xref
+        target="RFC6455"/>) except where any method has been used to negotiate
+        a meaning for these messages.</t>
       </section>
     </section>
 
@@ -305,47 +305,54 @@
         firewall. To make a connection, any client has to have already gained
         access to the subnet.</t>
 
-        <t>This is not the case for a RFB server which accepts connections
-        over the WebSocket protocol, which is specifically designed so that it
-        is safe to allow untrusted resources to make WebSocket connections, on
-        the assumption that WebSocket servers carefully enforce any applicable
-        restrictions on the origin of content. In the TCP example, the RFB
-        server does not need to enforce the restriction that connections
-        originate inside the subnet, as this is implemented using the
-        firewall. A web-browser running on a machine in the subnet may open up
-        WebSocket connections though based on scripts loaded from any source
-        at all on a webpage, originating outside the subnet. The web-browser
-        is only able to allow the script to do this on the basis that the
-        Origin header it sends conveys enough information for the WebSocket
-        server to apply any policies and decide if the connection is to be
-        accepted.</t>
+        <t>This is not the case for a RFB server accepting connections over
+        the WebSocket protocol. The WebSocket protocol is specifically
+        designed so that it is safe to allow untrusted resources to make
+        connections, on the assumption that WebSocket servers carefully
+        enforce any applicable restrictions on the origin of content. In the
+        TCP example, the RFB server does not need to enforce the restriction
+        that connections originate inside the subnet, is this is implemented
+        by the firewall. However, a web-browser running on a machine in the
+        subnet may open up WebSocket connection based on scripts loaded from
+        any source at all on a web page, originating outside the subnet. The
+        web-browser is only able to allow the script to do this on the basis
+        that the Origin header it sends conveys enough information for the
+        WebSocket server to apply any policies and decide if the connection is
+        to be accepted.</t>
 
         <t>Therefore, any WebSocket server implementers must carefully
         consider the implications of opening up access to resources via the
-        WebSocket Protocol. In the case of an RFB server which is accessible
-        over TCP as well as the RFB WebSocket subprotocol, the TCP connection
-        may be hidden behind a firewall or NAT or for any other reason may be
-        not publicly accessible on the internet. In this case, the origin
-        restrictions in place for the TCP connections should be enforced for
-        the WebSocket server also, or else clearly documented in such a way
-        that administrators of the software do not misunderstand the scope of
-        who can connect in to the server.</t>
+        WebSocket Protocol. Any WebSocket server must act as its own firewall,
+        since it receives essentially unfiltered connections from the public
+        Internet. In the case of an RFB server which is accessible over TCP as
+        well as the RFB WebSocket subprotocol, the TCP connection may be
+        hidden behind a firewall or NAT or for any other reason may be not
+        publicly accessible on the Internet. In this case, the origin
+        restrictions in place for the TCP connections should be also enforced
+        by the WebSocket server implementation, or else clearly documented in
+        such a way that administrators of the software do not misunderstand
+        the scope of who can connect in to the server.</t>
 
         <t>Unless all WebSocket software that runs in a LAN environment is
-        implemented to enforce these restrictions, web-browsers vendors may
-        not be able to justify continuing to permit untrusted web resources
-        (JavaScript) to make WebSocket connections.</t>
+        implemented to enforce these restrictions, web-browser vendors may not
+        be able to justify permitting untrusted web resources (JavaScript) to
+        make WebSocket connections.</t>
       </section>
 
-      <section title="Encryption">
+      <section title="Data authentication and integrity">
         <t>Where applicable, the Secure WebSocket Protocol (using the
         WebSocket Protocol over <xref target="RFC5246">TLS</xref>) may be
         used. However, it is not practicable in all circumstances to provision
-        many dynamic RFB servers on a LAN with a certificate which browsers
-        can verify, so implementors may choose to perform encryption at the
-        application level using an encrypting RFB Security Type, and verify
-        the peer using identities which can be verified by the RFB
-        implementation rather than the browser.</t>
+        many dynamically-run RFB servers on a LAN with a certificate which
+        browsers can verify, so implementors may choose to use an unencrypted
+        WebSocket connection, but authenticate the server at the application
+        level using an encrypting RFB Security Type, verifying the peer using
+        identities known to the RFB client rather than the browser.</t>
+
+        <t>Therefore, use of TLS is encouraged alongside other mechanisms
+        including secure RFB Security Types. It is strongly recommended that
+        one of these two mechanisms is used to provide authentication of the
+        server, and integrity and confidentiality of RFB data.</t>
       </section>
 
       <section title="Creating a Safe JavaScript Environment">
